@@ -7,6 +7,10 @@ Format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This project uses [semantic versions](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] 2023-08-13
+
+Upgrade Go version
+
 ## [0.1.2] 2021-09-25
 
 Upgrade Go version
