@@ -14,32 +14,45 @@ type Seed struct {
 	done     bool
 }
 
-// SeedHandler provides the handler
-type SeedHandler struct {
+// Seater provides the handler
+type Seater interface {
+	// Add adds a new seed
+	Add(s Seed)
+
+	// AddSome adds a bunch of seeds
+	AddSome(l []Seed)
+
+	// RunAll runs all seeds
+	RunAll() error
+
+	// Runs a single seed by name
+	RunByName(name string) error
+}
+
+// NewSeater returns a new handler
+func NewSeater(db *gorm.DB) Seater {
+	return &seedHandler{db: db}
+}
+
+type seedHandler struct {
 	db   *gorm.DB
 	list []Seed
 }
 
-// SeedHandlerNew returns a new handler
-func SeedHandlerNew(db *gorm.DB) (h SeedHandler) {
-	h.db = db
-	return
-}
-
-// Add adds a new seed
-func (h *SeedHandler) Add(s Seed) {
+// Add implements the Seater interface
+func (h *seedHandler) Add(s Seed) {
 	h.list = append(h.list, s)
 }
 
-// AddSome adds a bunch of seeds
-func (h *SeedHandler) AddSome(l []Seed) {
+// AddSome implements the Seater interface
+func (h *seedHandler) AddSome(l []Seed) {
 	for _, l := range l {
 		h.Add(l)
 	}
 }
 
-// RunAll runs all seeds
-func (h *SeedHandler) RunAll() (err error) {
+// RunAll implements the Seater interface
+func (h *seedHandler) RunAll() (err error) {
 	for k, v := range h.list {
 		if v.done {
 			continue
@@ -57,8 +70,8 @@ func (h *SeedHandler) RunAll() (err error) {
 	return
 }
 
-// Runs a single seed by name
-func (h *SeedHandler) RunByName(name string) (err error) {
+// RunByName implements the Seater interface
+func (h *seedHandler) RunByName(name string) (err error) {
 	for k, v := range h.list {
 		if v.Name != name {
 			continue
