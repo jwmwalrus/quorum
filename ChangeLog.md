@@ -7,6 +7,10 @@ Format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This project uses [semantic versions](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0] 2023-08-29
+
+Rename repository to Quorum
+
 ## [0.1.4] 2023-08-13
 
 Add go.sum file
