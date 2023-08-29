@@ -29,8 +29,8 @@ type Seater interface {
 	RunByName(name string) error
 }
 
-// NewSeater returns a new handler
-func NewSeater(db *gorm.DB) Seater {
+// New returns a new handler
+func New(db *gorm.DB) Seater {
 	return &seedHandler{db: db}
 }
 
