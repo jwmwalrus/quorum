@@ -1,4 +1,4 @@
-module github.com/jwmwalrus/seater
+module github.com/jwmwalrus/quorum
 
 go 1.20
 
