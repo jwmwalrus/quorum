@@ -7,6 +7,10 @@ Format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This project uses [semantic versions](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.2] 2023-08-29
+
+Fix module path
+
 ## [0.11.1] 2023-08-29
 
 Drop package name from seater factory function
